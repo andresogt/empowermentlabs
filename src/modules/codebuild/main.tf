@@ -59,7 +59,7 @@ resource "aws_iam_role_policy" "role-policy" {
 POLICY
 }
 
-resource "aws_codebuild_project" "example" {
+resource "aws_codebuild_project" "codebuild-empowermentlabs" {
   name          = "empowermentlabs-project"
   description   = "empowermentlabs_project"
   build_timeout = "5"

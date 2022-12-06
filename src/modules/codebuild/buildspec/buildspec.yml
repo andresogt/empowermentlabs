@@ -14,4 +14,4 @@ phases:
     commands:
       - aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 159321162316.dkr.ecr.us-east-1.amazonaws.com
       - docker push $ECR_FRONT:latest
-      - aws ecs update-service --force-new-deployment --service "frontend_app" --cluster "cluster-ecs-fe"
+      - aws ecs update-service --force-new-deployment --service "frontend_app" --cluster $ECS_FRONT
