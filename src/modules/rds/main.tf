@@ -3,7 +3,6 @@ resource "aws_rds_cluster" "db_empowerlabs" {
   engine                  = "aurora-postgresql"
   availability_zones      = ["us-east-1a", "us-east-1b"]
   database_name           = "mydb"
-  db_cluster_instance_class = "db.r6gd.xlarge"
   master_username         = "empowermentlabs"
   master_password         = "empowermentlabs"
   backup_retention_period = 5
