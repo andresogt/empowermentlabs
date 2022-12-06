@@ -1,0 +1,17 @@
+version: 0.2
+
+env:
+  parameter-store:
+    ECR_FRONT: "/empowermentlabs/ecr_front"
+    ECS_FRONT: "/empowermentlabs/ecs_front"
+
+phases:
+  build:
+    commands:
+      - echo Building the Docker image...
+      - docker build -t $ECR_FRONT:latest .
+  post_build:
+    commands:
+      - aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 159321162316.dkr.ecr.us-east-1.amazonaws.com
+      - docker push $ECR_FRONT:latest
+      - aws ecs update-service --force-new-deployment --service "frontend_app" --cluster "cluster-ecs-fe"
